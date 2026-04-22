@@ -67,22 +67,6 @@ npm run test:cov
 npm run test:e2e
 ```
 
-## Base de Datos
-
-### Modelo Contact
-
-```sql
-CREATE TABLE "Contact" (
-  id        VARCHAR(36) PRIMARY KEY DEFAULT uuid(),
-  name      VARCHAR(255) NOT NULL,
-  email     VARCHAR(255) NOT NULL,
-  message   TEXT NOT NULL,
-  source    VARCHAR(50) DEFAULT 'web',
-  status    VARCHAR(50) DEFAULT 'pending',
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
 ## Stack Tecnológico
 
 - **Framework**: NestJS 11
