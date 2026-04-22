@@ -1,14 +1,6 @@
 # Orsetto Contact API
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-<p align="center">
-  API REST para gestionar contactos y consultas del sistema Orsetto.
-  <br />
-  Construida con <a href="https://nestjs.com/" target="_blank">NestJS</a> y <a href="https://www.prisma.io/" target="_blank">Prisma ORM</a>
-</p>
+API de NestJS para gestionar contactos y consultas del sistema Orsetto.
 
 ## Descripción
 
