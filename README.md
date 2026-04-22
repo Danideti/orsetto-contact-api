@@ -4,13 +4,9 @@ API de NestJS para gestionar contactos y consultas del sistema Orsetto.
 
 ## Descripción
 
-**Orsetto Contact API** es un servicio backend que permite:
-- 📧 Recibir y almacenar contactos/consultas
-- 🔐 Autenticación JWT para acceso seguro
-- 📨 Envío de emails mediante EmailJS
-- 📋 Gestión y consulta de contactos almacenados
-- ✅ Validación de datos con DTOs
-- 🏗️ Arquitectura limpia (Domain-Driven Design)
+API de NestJS para gestionar contactos y consultas del sistema Orsetto. 
+
+Implementada con **principios SOLID** y arquitectura limpia (Domain-Driven Design) para garantizar código mantenible y escalable.
 
 ## Requisitos Previos
 
@@ -66,38 +62,11 @@ La API estará disponible en `http://localhost:3000`
 
 ## Endpoints Principales
 
-### 📧 Contactos
-
 **POST** `/contact` - Crear nuevo contacto
-```json
-{
-  "name": "Juan Pérez",
-  "email": "juan@example.com",
-  "message": "Tengo una consulta..."
-}
-```
 
-**GET** `/contact` - Listar todos los contactos (requiere JWT)
-```
-Headers: Authorization: Bearer {token}
-```
+**GET** `/contact` - Listar contactos (requiere autenticación)
 
-### 🔐 Autenticación
-
-**POST** `/auth/login` - Obtener token JWT
-```json
-{
-  "email": "admin@orsetto.com",
-  "password": "tu_contraseña"
-}
-```
-
-Retorna:
-```json
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIs..."
-}
-```
+**POST** `/auth/login` - Obtener token de acceso
 
 ## Testing
 
