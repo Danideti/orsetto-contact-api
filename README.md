@@ -28,23 +28,6 @@ npx prisma migrate dev
 npx prisma generate
 ```
 
-## Variables de Entorno
-
-Crear un archivo `.env` en la raíz del proyecto:
-
-```env
-DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/orsetto_contacts"
-
-JWT_SECRET="tu_secreto_jwt_super_seguro"
-
-EMAILJS_SERVICE_ID="your_emailjs_service_id"
-EMAILJS_TEMPLATE_ID="your_emailjs_template_id"
-EMAILJS_PUBLIC_KEY="your_emailjs_public_key"
-
-PORT=3000
-NODE_ENV="development"
-```
-
 ## Ejecución
 
 ```bash
