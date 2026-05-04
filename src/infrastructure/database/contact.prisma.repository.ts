@@ -6,7 +6,7 @@ export class ContactPrismaRepository implements IContactRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async save(contact: Contact): Promise<Contact> {
-    const saved = await this.prisma.contact.create({
+    const saved = await this.prisma.primary.contact.create({
       data: {
         name: contact.name,
         email: contact.email,
@@ -26,7 +26,7 @@ export class ContactPrismaRepository implements IContactRepository {
   }
 
   async findAll(): Promise<Contact[]> {
-    const contacts = await this.prisma.contact.findMany();
+    const contacts = await this.prisma.replica.contact.findMany();
     return contacts.map(
       (c) =>
         new Contact(
@@ -39,4 +39,4 @@ export class ContactPrismaRepository implements IContactRepository {
         ),
     );
   }
-} 
+}
