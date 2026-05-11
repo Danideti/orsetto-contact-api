@@ -11,10 +11,13 @@ import { ContactPrismaRepository } from './infrastructure/database/contact.prism
 import { JwtStrategy } from './infrastructure/security/jwt.strategy';
 import { JwtService } from '@nestjs/jwt';
 import { EmailjsService } from './infrastructure/email/emailjs.service';
+import { ScheduleModule } from '@nestjs/schedule';
+import { NotificationRetryJob } from './application/jobs/notification-retry.job';
 
 @Module({
   imports: [
     PassportModule,
+    ScheduleModule.forRoot(), 
     JwtModule.register({
       secret: process.env.JWT_SECRET ?? 'orsetto_secret',
       signOptions: { expiresIn: '1d' },
@@ -25,6 +28,7 @@ import { EmailjsService } from './infrastructure/email/emailjs.service';
     PrismaService,
     EmailjsService,
     JwtStrategy,
+    NotificationRetryJob,
     {
       provide: SendContactUseCase,
       useFactory: (prisma: PrismaService, emailService: EmailjsService) => {

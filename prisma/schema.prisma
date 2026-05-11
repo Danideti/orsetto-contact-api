@@ -9,11 +9,17 @@ datasource db {
 }
 
 model Contact {
-  id        String   @id @default(uuid())
-  name      String
-  email     String
-  message   String
-  source    String   @default("web")
-  status    String   @default("pending")
-  createdAt DateTime @default(now())
+ id                  String    @id @default(uuid())
+  name                String
+  email               String
+  message             String
+  source              String    @default("web")
+  status              String    @default("pending")
+  createdAt           DateTime  @default(now())
+
+  // Campos nuevos para el cron job
+  notificationStatus  String    @default("PENDING")
+  notificationRetries Int       @default(0)
+  lastRetryAt         DateTime?
+  sentAt              DateTime?
 }
