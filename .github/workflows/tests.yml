@@ -1,0 +1,40 @@
+name: Run Tests
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: false
+        type: string
+        default: '20'
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print global variables
+        run: |
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Repo: ${{ github.repository }}"
+          echo "NODE_ENV: $NODE_ENV"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Run tests
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+        run: npm test -- --passWithNoTests --forceExit
